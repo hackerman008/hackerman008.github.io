@@ -6,5 +6,7 @@ category: offensive
 ---
 
 {% for post in site.posts %}
-- [{{ post.title }}]({{ post.url }})
+  {% if post.category contains 'offensive' %}
+  - [{{ post.title }}]({{ post.url }})
+  {% endif %}
 {% endfor %}
