@@ -7,6 +7,6 @@ category: offensive
 
 {% for post in site.posts %}
   {% if post.category contains 'offensive' %}
-  - [{{ post.title }}]({{ post.url }})
+  - [{{ post.title }}]({{ post.url }}) - {{ post.date | date: "%B %d, %Y" }}
   {% endif %}
 {% endfor %}

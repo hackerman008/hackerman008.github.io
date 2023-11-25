@@ -1,0 +1,102 @@
+---
+layout: post
+title:  "Malware Development For Offsec: Retrieving Native API address at runtime"
+date:   2023-11-24 14:31:00 +0530
+category: offensive
+---
+
+# **Overview**
+Native API address serve its importance in the implementation of Shellcodes. The syscall IDs and API addresses can also be used in implementing Payloads to hide from EDR detection using win32 API hooks. The writeup demonstrates how PEB and the PE file structure can be used to dynamically retrieve addresses of APIs and Syscall IDs at runtime.
+
+# **Contents**
+- Retrieving base address of ntdll
+- Retrieving base address of API by parsing PE header at runtime
+- Retrieving syscall IDs
+
+# **Retrieving Base address of ntdll**
+The first address to be retrieved is the pointer to **TEB (Thread Environment Block)**. TEB structure store various values related to the state of the process and also contains the pointer to the **PEB (Process Environment Block)** structure. The TEB is retrieved using **gs:[30]** for **64 bit systems**. The address of PEB is located at offset 0x60.
+
+![image_tebStructure](/files/images/OffsecWriteup1/image_tebStructure.png)
+<!--image_tebStructure-->
+
+Inside **PEB** the address of **_PEB_LDR_DATA** structure is located at offset **0x18**.
+
+![image_pebStructure](/files/images/OffsecWriteup1/image_pebStructure.png)
+<!--image_pebStructure-->
+
+Inside **_PEB_LDR_DATA** structure, the **_InLoadOrderModuleList** field is located at offset **0x10**. The field points to linked list of a structure of type **_LDR_DATA_TABLE_ENTRY**
+
+![image_pebLdrData_structure](/files/images/OffsecWriteup1/image_pebLdrData_structure.png)
+<!--image_pebLdrData_structure-->
+
+At **offset 0x60** inside **_LDR_DATA_TABLE_ENTRY** structure the BaseDllName structure stores the name of the DLL in wide character format.
+
+![image__ldrDataTableEntry_structure](/files/images/OffsecWriteup1/image__ldrDataTableEntry_structure.png)
+<!--image__ldrDataTableEntry_structure-->
+
+The code below shows implementing this in Assembly.
+
+![image_code_retrievingTheDllName](/files/images/OffsecWriteup1/image_code_retrievingTheDllName.png)
+<!--image_code_retrievingTheDllName-->
+
+At this point we can match the name found with ntdll or any other DLL we wish to find. If the name does not match we can get the pointer to the next structure in the linked list located at **offset 0x0** in the **_LDR_DATA_TABLE_ENTRY** structure pointed to by **InLoadOrderModuleList**.
+
+
+>Note: The fields **InLoadOrderModuleList, InMemoryOrderModuleList** point to the same linked list structure but at different offsets. Therefore the offset to the **BaseDllName** field will change depending on which list was used to get to the **_LDR_DATA_TABLE_ENTRY** linked list.
+
+
+After find the right DLL, the **offset 0x30** inside **_LDR_DATA_TABLE_ENTRY** can be used to retrieve the base address of the DLL as seen in the image of the structure.
+
+![image_retrievedNtdllBase](/files/images/OffsecWriteup1/image_retrievedNtdllBase.png)
+<!--image_retrievedNtdllBase-->
+
+As the image above shows the output of the program even after running twice does not change the address of the DLL because DLLs are loaded once by the Operating System into memory and shared among processes. The command prompt window above is a low level process and therfore doesn't require administrative rights to retrieve the address or patch the DLL inside our process.
+
+>Note: The values of address may be different in your OS as ASLR randomizes the address at boot time for these DLLs
+
+# **Retrieving Base Address Of API By Parsing PE Headers At Runtime**
+
+Below image shows the layout of the PE headers to get to the **Export Directory** which contains the **Export Address Table**
+
+![image_peHeaderLayout](/files/images/OffsecWriteup1/image_peHeaderLayout.png)
+<!--image_peHeaderLayout-->
+
+Taking a look ar the above image the DOS header contains the **offset to NT Header at 0x3c** in the **e_lfanew** field. At **offset 0x70** from start of **Optional Header** is the offset to Export Directory which contains the Export Address Table. THe Assembly code below shows the implementation.
+
+![image_codeTraversingPeFileStructure](/files/images/OffsecWriteup1/image_codeTraversingPeFileStructure.png)
+<!--image_codeTraversingPeFileStructure-->
+
+Inside **Export DIrectory** the important fields are:
+- Offset **0x1c** points to array of **AddressOfFunction**
+- Offset **0x2c** points to array of **AddressOfNames**
+- Offset **0x24** points to array of **AddressOfNameOrdinals**
+
+We first use the address of names array to loop through all the names of the APIs to find the matching API. The code to achieve this is shown below.
+
+![image_codeFindMatchingApiName](/files/images/OffsecWriteup1/image_codeFindMatchingApiName.png)
+<!--image_codeFindMatchingApiName-->
+
+The index at which the name is found is used as an index in the address of the name ordinals array. The value retrieved from the name ordinals array is then used as an index in the address of functions array to find the address of the API.
+
+![image_codeRetrieveApiAddress](/files/images/OffsecWriteup1/image_codeRetrieveApiAddress.png)
+<!--image_codeRetrieveApiAddress-->
+
+The below diagram shows the relation between all the arrays.
+
+![image_relationBetweenDifferentArrayTables](/files/images/OffsecWriteup1/image_relationBetweenDifferentArrayTables.png)
+<!--image_relationBetweenDifferentArrayTables-->
+
+![image_retrievedApiAddress](/files/images/OffsecWriteup1/image_retrievedApiAddress.png)
+<!--image_retrievedApiAddress-->
+
+# **Retrieving Syscall IDs**
+
+![image_nativeApiImplementationInsideNtdll](/files/images/OffsecWriteup1/image_nativeApiImplementationInsideNtdll.png)
+<!--image_nativeApiImplementationInsideNtdll-->
+
+The above image shows a typical native API definition in Assembly. The value being moved to the eax register represents the Syscall ID. The Syscall ID is important as it represents an index into an array that contains the pointers to Syscall handler routines inside the Kernel. 
+
+We can retrieve the Syscall ID after we have already retrieved the address by adding the correct offset to the base address of the API which in this case is 5 bytes.
+
+![image_retrievedSyscallId](/files/images/OffsecWriteup1/image_retrievedSyscallId.png)
+<!--image_retrievedSyscallId-->
