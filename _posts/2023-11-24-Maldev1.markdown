@@ -100,3 +100,7 @@ We can retrieve the Syscall ID after we have already retrieved the address by ad
 
 ![image_retrievedSyscallId](/files/images/OffsecWriteup1/image_retrievedSyscallId.png)
 <!--image_retrievedSyscallId-->
+
+# **Files**
+
+- [Code](https://github.com/hackerman008/Offensive-Security/tree/1da59d0103a9e50e72ac968ced9a692ec59add3e/Malware%20Development%20For%20Offsec/Writeups/Retrieving%20native%20api%20address%20and%20syscall%20id%20at%20runtime)
