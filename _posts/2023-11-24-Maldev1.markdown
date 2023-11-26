@@ -12,6 +12,7 @@ Native API address serve its importance in the implementation of Shellcodes. The
 - Retrieving base address of ntdll
 - Retrieving base address of API by parsing PE header at runtime
 - Retrieving syscall IDs
+- Downloads
 
 # **Retrieving Base address of ntdll**
 The first address to be retrieved is the pointer to **TEB (Thread Environment Block)**. TEB structure store various values related to the state of the process and also contains the pointer to the **PEB (Process Environment Block)** structure. The TEB is retrieved using **gs:[30]** for **64 bit systems**. The address of PEB is located at offset 0x60.
@@ -101,6 +102,6 @@ We can retrieve the Syscall ID after we have already retrieved the address by ad
 ![image_retrievedSyscallId](/files/images/OffsecWriteup1/image_retrievedSyscallId.png)
 <!--image_retrievedSyscallId-->
 
-# **Files**
+# **Downloads**
 
 - [Code](https://github.com/hackerman008/Offensive-Security/tree/1da59d0103a9e50e72ac968ced9a692ec59add3e/Malware%20Development%20For%20Offsec/Writeups/Retrieving%20native%20api%20address%20and%20syscall%20id%20at%20runtime)

@@ -17,6 +17,7 @@ A **malware loader** is a piece of malicious software used in the initial stage 
 - Copying payload to remote process
 - Changing entry point to main thread
 - Executing the program
+- Downloads
 
 # **Setup/Introduction**
 In this writeup we will implement a custom loader that will spawn a legitimate process and inject our payload into it.
@@ -165,6 +166,6 @@ The main files for the project are shown below.
 ![image_contentsLogFile](/files/images/OffsecWriteup2/image_contentsLogFile.png)
 <!--image_contentsLogFile-->
 
-# **Files**
+# **Downloads**
 
 - [Code](https://github.com/hackerman008/Offensive-Security/tree/1da59d0103a9e50e72ac968ced9a692ec59add3e/Malware%20Development%20For%20Offsec/Writeups/Implementing%20Custom%20Malware%20Loaders%201/Code)
