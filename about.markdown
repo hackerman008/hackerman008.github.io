@@ -4,8 +4,9 @@ title: About
 permalink: /about/
 ---
 
-I am a self-taught Malware Analyst and Red Team enthusiast with practical experience in analyzing complex malware and building red teaming tools. My journey in cybersecurity started two years ago and from that time I have been constantly gaining new skills and honing my craft in both defense and offensive security. Below are some of the projects I have worked on.
+I am a self-taught Malware Analyst and Red Team enthusiast with practical experience in analyzing complex malware and building red teaming tools. My journey in cybersecurity started two years ago and from that time I have been constantly gaining new skills and honing my craft in both defense and offensive security. 
 
+<!-->
 ### Offensive Security
 
 **Custom command cnd control infrastructure for post-exploitaion activity**
