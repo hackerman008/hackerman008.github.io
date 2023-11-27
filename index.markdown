@@ -6,4 +6,4 @@ layout: page
 
 ---
 
-![HackermLogo](/files/images/random/hackerman_image7.png)
+![HackermLogo](/files/images/random/hackerman_image8.png)
