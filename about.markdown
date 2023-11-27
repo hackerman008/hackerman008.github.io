@@ -6,7 +6,7 @@ permalink: /about/
 
 I am a self-taught Malware Analyst and Red Team enthusiast with practical experience in analyzing complex malware and building red teaming tools. My journey in cybersecurity started two years ago and from that time I have been constantly gaining new skills and honing my craft in both defense and offensive security. 
 
-<!-->
+<!--
 ### Offensive Security
 
 **Custom command cnd control infrastructure for post-exploitaion activity**
@@ -44,3 +44,5 @@ I am a self-taught Malware Analyst and Red Team enthusiast with practical experi
 [Github](https://github.com/prakashyadav008/Insight-into-malware/blob/main/malware_analysis4.pdf) **Guloader malware analysis**
 
 [Github](https://github.com/prakashyadav008/Insight-into-malware/blob/main/malware_anaysis3.pdf) **Trickbot loader malware analysis**
+
+-->
