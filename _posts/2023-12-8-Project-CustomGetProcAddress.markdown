@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Custom GetProcAddress And GetModuleHandle"
-date:   2023-11-23 9:50:00 +0530
+date:   2023-12-8 9:50:00 +0530
 category: projects
 ---
 
