@@ -20,6 +20,9 @@ This avoids using the commonly known APIs anc can bring down the detection of a 
 ![Image1](/files/images/Project-GetProcAddress/pic_GetDllBase.png)
 ![Image2](/files/images/Project-GetProcAddress/pic_GetProcAddress.png)
 
+# **Video**
+![Video_Bypass_WindowsDefender](/files/Videos/Red%20Teaming%20Adversary%20Simulation%20Bypassing%20WD%20.mp4)
+
 
 # **Project Page**
 - [https://github.com/hackerman008/Custom-GetProcAddress-GetModuleHandle](https://github.com/hackerman008/Custom-GetProcAddress-GetModuleHandle)
