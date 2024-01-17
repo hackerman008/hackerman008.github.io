@@ -5,6 +5,14 @@ permalink: /videos/
 category: videos
 ---
 
+**Using simple Time Delay Loops in assembly to bypass detection using File Emulation by Windows Defender**
+<video controls width="640" height="360">
+  <source src="/files/Videos/Bypassing Windows Defender using time delay loop.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+
+
 **Writing your own assembly functions as alternative to Windows APIs for Malware Dev**
 
 <video controls width="640" height="360">
