@@ -21,7 +21,10 @@ This avoids using the commonly known APIs anc can bring down the detection of a 
 ![Image2](/files/images/Project-GetProcAddress/pic_GetProcAddress.png)
 
 # **Video**
-![Video_Bypass_WindowsDefender](/files/Videos/Red%20Teaming%20Adversary%20Simulation%20Bypassing%20WD%20.mp4)
+<video controls width="640" height="360">
+  <source src="/files/Videos/Red Teaming Adversary Simulation Bypassing WD .mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 
 # **Project Page**
