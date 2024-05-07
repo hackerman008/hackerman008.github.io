@@ -4,4 +4,6 @@ title: About
 permalink: /about/
 ---
 
-I am a self-taught Malware Analyst and Red Team enthusiast with practical experience in analyzing complex malware and building red teaming tools. My journey in cybersecurity started two years ago and from that time I have been constantly gaining new skills and honing my craft in both defense and offensive security.
+
+I am an **Ethical Hacker and Malware Researcher**, primarily self-taught, with a strong focus on **malware development, offensive security tool development, malware analysis**. My passion for cybersecurity began almost two years ago and since then, I have been on a continuous journey of learning and improving my skills in both offensive and defensive security.
+ 

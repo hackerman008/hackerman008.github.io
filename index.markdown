@@ -6,4 +6,4 @@ layout: page
 
 ---
 
-![HackermLogo](/files/images/random/hackerman_image8.png)
+![HackermLogo](/files/images/Offensive_Development_In_Assembly_And_C_Intro/Cover2_Offensive_Development.jpeg)

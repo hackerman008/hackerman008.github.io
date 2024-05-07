@@ -21,7 +21,7 @@
 title: Hack3rMan
 email: prakashyadav008@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  A blog for offensive security and malware analysis
+  A blog for offensive security and malware research
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://hackerman008.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 linkedin_username: prakash-chandra-yadav
