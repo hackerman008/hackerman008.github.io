@@ -98,7 +98,7 @@ movsd xmm0, qword ptr [rbp-8]             ; mov 64 bit double precision floating
 
 From the point of view of program that is executing the components that are important to us are the registers, status and control flags. Below is a diagram that shows the various components.
 
-![Image_Resisters_Flags_Architecture](/files/images/Offensive_Development_In_Assembly_And_C_Intro/Intel_Architecture_Registers.drawio.png)
+![Image_Resisters_Flags_Architecture](/files/images/Offensive_Development_In_Assembly_And_C_Intro/Intel_Architecture_Registers.png)
 <!--Diagram_Registers_StatusFlags_RIP--->
 
 >Note: We do not need the XMM, YMM and ZMM registers along with Floating point status and control for our work. XMM, YMM and ZMM registers are mostly used in operations that require speed as multiple data units can be packed in an array and used for data manipulation.
@@ -107,7 +107,7 @@ From the point of view of program that is executing the components that are impo
 
 x64 architecture has 16 general purpose registers namely **RAX, RBX, RCX, RDX, RSI, RDI, RBP, RSP, R8, R9, R10, R11, R12, R13, R14, R15** all of which are 64 bits in size. They are called **General Purpose Registers** as they can be used in various different operations like data manipulation, data storage, address manipulation and storage etc. The image below show the registers and the low order bytes.
 
-![Image_General_Purpose_Registers](/files/images/Offensive_Development_In_Assembly_And_C_Intro/Registers.drawio.png)
+![Image_General_Purpose_Registers](/files/images/Offensive_Development_In_Assembly_And_C_Intro/Registers.png)
 <!--Image_General_Purpose_Registers-->
 
 **The low order bytes can be accessed separately i.e. mov eax, edx or mov ax, dx**. For RAX register, AL represents the lowest 8 bits (Byte), AX represents the lowest 16 bits (Word), EAX represents the lowest 32 bit (Double Word). All of the above data units can be accessed separately. 
@@ -264,7 +264,7 @@ Consider the below code that declares 4 variables of 1 byte, 2 byte, 4 byte and 
 
 The diagram below shows how the values will be stored in memory in the .DATA section when the file is loaded in memory.
 
-![Image_Endianness](/files/images/Offensive_Development_In_Assembly_And_C_Intro/Endianess.drawio.png)
+![Image_Endianness](/files/images/Offensive_Development_In_Assembly_And_C_Intro/Endianess.png)
 
 As we can see, the least significant byte of of the values whose size is more than a byte is stored in the lowest address and the most significant byte is stored in the highest address. Whenever we retrieve the value from an address we don't have to worry about endianness since the CPU takes care of it. **But there is a particular case we need to be aware of when we try to use stack strings i.e when we try to store a string in a register and try to move it to stack like below**.
 
