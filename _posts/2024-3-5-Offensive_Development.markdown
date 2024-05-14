@@ -14,7 +14,7 @@ This series will focus on Malware/Payload development in **Assembly** and **C** 
 
 # **Contents**
 - Setting up the environment
-- Things To Remember
+- Things to remember
 - Getting a basic idea of assembly
 - Fundamental data types
 - Internal architecture
@@ -39,9 +39,9 @@ After the SDK, we need an editor. I have chosen Visual Studio Code. It has exten
 
 After everything is installed, make sure to take a snapshot of the machine if you are using Virtual Machine.
 
-# **Things To Remember**
+# **Things to remember**
 
-**This article has skipped over things that may not make sense and cause confusion to focus on what's needed for the time being. But I will point out the details of instructions and their meaning when used in code**. But I do suggest to start reading the Intel manuals after reading this article. Intel manuals Volume1 and Volume 2 (2A, 2B, 2C, 2D) have everything that we need. Volume 1 contains an overview and information about the Intel architecture and Volume 2 goes in-depth about the instruction format and types of instructions. You can download the manuals from [this link](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html).   
+**This article has skipped over things that may not make sense and cause confusion to focus on what's needed for the time being. But I will point out the details of instructions and their meaning when used in code**. But I do suggest to start reading the Intel manuals after reading this article. Intel manuals Volume1 and Volume 2 (2A, 2B, 2C, 2D) have everything that we need. Volume 1 contains an overview and information about the Intel architecture and Volume 2 goes in-depth about the instruction format and types of instructions. You can download the manuals from **[this link](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html)**.   
 
 # **Getting a basic idea of assembly**
 
