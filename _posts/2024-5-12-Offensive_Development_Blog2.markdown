@@ -26,7 +26,7 @@ category: offensive
 - shr and shl instruction
 - call instruction
 - RIP relative addressing and absolute addressing
-- After Thoughts
+- After thoughts
 - Download
 
 # **Things to remember**
@@ -275,7 +275,7 @@ lea rcx, [string1]                  ; moves the address of string1 variable to r
 
 **In absolute addressing the explicit address of the variable location is encoded in the machine instruction** and therefore the code needs to be located at a specified base address otherwise the instruction would need to be fixed and this is why we have a relocation section. **Shellcode is independent and does not require relocation since all memory references are relative**.
 
-# **After Thoughts**
+# **After thoughts**
 
 It is not necessary to remember and mug up all the instructions and what they do from the start. From my experience its better to have an idea of what an instruction can do and as you use them in your code and debug it, it will make much more sense and also be easy to remember. x64 architecture has a lot of instructions most of them you'll never learn and therefore the most common once should always be kept in mind.
 
